@@ -1,0 +1,4 @@
+world types-test-task-manager-dot-os-v0 {
+    import task-manager;
+    include lib;
+}

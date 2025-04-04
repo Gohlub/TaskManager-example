@@ -1,0 +1,5 @@
+world test-task-manager-dot-os-v0 {
+    import tester;
+    import task-manager;
+    include process-v1;
+}

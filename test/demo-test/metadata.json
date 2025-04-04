@@ -1,0 +1,22 @@
+{
+    "name": "Demo Test",
+    "description": "A demo test showcasing the hyperware app framework.",
+    "image": "",
+    "properties": {
+        "package_name": "demo-test",
+        "current_version": "0.1.0",
+        "publisher": "uncentered.os",
+        "mirrors": [],
+        "code_hashes": {
+            "0.1.0": ""
+        },
+        "wit_version": 1,
+        "dependencies": [
+            "app-framework-demo:uncentered.os",
+            "tester:sys"
+        ]
+    },
+    "external_url": "",
+    "animation_url": ""
+}
+

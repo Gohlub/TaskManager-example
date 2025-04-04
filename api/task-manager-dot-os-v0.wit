@@ -1,0 +1,4 @@
+world task-manager-dot-os-v0 {
+    import task-manager;
+    include process-v1;
+}

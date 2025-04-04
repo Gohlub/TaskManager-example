@@ -1,0 +1,69 @@
+runtime = { FetchVersion = "latest" }
+persist_home = false
+runtime_build_release = false
+always_print_node_output = false
+
+[[tests]]
+dependency_package_paths = [".."]
+setup_packages = [{ path = "..", run = true }]
+setup_scripts = []
+test_package_paths = ["demo-test"]
+test_scripts = []
+timeout_secs = 35
+fakechain_router = 8545
+
+[[tests.nodes]]
+port = 8080
+home = "home/indexer"
+fake_node_name = "indexer.os"
+runtime_verbosity = 2
+
+[[tests.nodes]]
+port = 8081
+home = "home/client"
+fake_node_name = "client.os"
+runtime_verbosity = 2
+
+[[tests.nodes]]
+port = 8082
+home = "home/curator"
+fake_node_name = "curator.os"
+runtime_verbosity = 2
+
+
+# [[tests.nodes]]
+# port = 8082
+# home = "test-demo/results/client1"
+# fake_node_name = "client1.os"
+# runtime_verbosity = 2
+
+# [[tests.nodes]]
+# port = 8083
+# home = "test-demo/results/client2"
+# fake_node_name = "client2.os"
+# runtime_verbosity = 2
+
+# [[tests.nodes]]
+# port = 8084
+# home = "test-demo/results/client3"
+# fake_node_name = "client3.os"
+# runtime_verbosity = 2
+
+# [[tests.nodes]]
+# port = 8085
+# home = "test-demo/results/client4"
+# fake_node_name = "client4.os"
+# runtime_verbosity = 2
+
+# [[tests.nodes]]
+# port = 8086
+# home = "test-demo/results/client5"
+# fake_node_name = "client5.os"
+# runtime_verbosity = 2
+
+# [[tests.nodes]]
+# port = 8100
+# home = "test-demo/results/curator0"
+# fake_node_name = "curator0.os"
+# runtime_verbosity = 2
+

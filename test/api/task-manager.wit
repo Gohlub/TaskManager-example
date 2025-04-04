@@ -1,0 +1,100 @@
+interface task-manager {
+    // This interface contains function signature definitions that will be used
+    // by the hyper-bindgen macro to generate async function bindings.
+    //
+    // NOTE: This is currently a hacky workaround since WIT async functions are not
+    // available until WASI Preview 3. Once Preview 3 is integrated into Hyperware,
+    // we should switch to using proper async WIT function signatures instead of
+    // this struct-based approach with hyper-bindgen generating the async stubs.
+
+    use standard.{address};
+
+    record task-manager-stats {
+        total-tasks: u64,
+        pending-tasks: u64,
+        completed-tasks: u64,
+        creation-count: u64,
+        request-count: u64
+    }
+
+    record task {
+        id: string,
+        title: string,
+        description: string,
+        status: task-status,
+        created-at: u64,
+        assigned-to: option<string>
+    }
+
+    variant task-status {
+        pending,
+        in-progress,
+        completed,
+        cancelled
+    }
+
+    record task-response {
+        success: bool,
+        task: option<task>,
+        storage-status: bool,
+        message: string
+    }
+
+    record new-task-request {
+        title: string,
+        description: string,
+        assigned-to: option<string>
+    }
+
+    record task-status-update-request {
+        task-id: string,
+        new-status: task-status
+    }
+
+    // Function signature for: create-task (http)
+    record create-task-signature-http {
+        target: string,
+        new-task-req: new-task-request,
+        returning: task-response
+    }
+
+    // Function signature for: get-all-tasks (http)
+    record get-all-tasks-signature-http {
+        target: string,
+        returning: list<task>
+    }
+
+    // Function signature for: get-task (http)
+    record get-task-signature-http {
+        target: string,
+        task-id: string,
+        returning: task-response
+    }
+
+    // Function signature for: update-task-status (http)
+    record update-task-status-signature-http {
+        target: string,
+        update-req: task-status-update-request,
+        returning: task-response
+    }
+
+    // Function signature for: get-statistics (local)
+    record get-statistics-signature-local {
+        target: address,
+        returning: task-manager-stats
+    }
+
+    // Function signature for: get-tasks-by-status (remote)
+    record get-tasks-by-status-signature-remote {
+        target: address,
+        status: task-status,
+        returning: list<task>
+    }
+
+    // Function signature for: get-tasks-by-status (local)
+    record get-tasks-by-status-signature-local {
+        target: address,
+        status: task-status,
+        returning: list<task>
+    }
+}
