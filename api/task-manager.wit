@@ -9,12 +9,11 @@ interface task-manager {
 
     use standard.{address};
 
-    record task-manager-stats {
-        total-tasks: u64,
-        pending-tasks: u64,
-        completed-tasks: u64,
-        creation-count: u64,
-        request-count: u64
+    variant task-status {
+        pending,
+        in-progress,
+        completed,
+        cancelled
     }
 
     record task {
@@ -26,11 +25,17 @@ interface task-manager {
         assigned-to: option<string>
     }
 
-    variant task-status {
-        pending,
-        in-progress,
-        completed,
-        cancelled
+    record task-manager-stats {
+        total-tasks: u64,
+        pending-tasks: u64,
+        completed-tasks: u64,
+        creation-count: u64,
+        request-count: u64
+    }
+
+    record task-status-update-request {
+        task-id: string,
+        new-status: task-status
     }
 
     record task-response {
@@ -44,11 +49,6 @@ interface task-manager {
         title: string,
         description: string,
         assigned-to: option<string>
-    }
-
-    record task-status-update-request {
-        task-id: string,
-        new-status: task-status
     }
 
     // Function signature for: create-task (http)

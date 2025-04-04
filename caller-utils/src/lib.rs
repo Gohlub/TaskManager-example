@@ -13,18 +13,18 @@ use hyperware_process_lib::Address;
 use serde_json::json;
 
 // Import specific types from each interface
-pub use crate::wit_custom::TaskManagerStats;
-pub use crate::wit_custom::Task;
 pub use crate::wit_custom::TaskStatus;
+pub use crate::wit_custom::Task;
+pub use crate::wit_custom::TaskManagerStats;
+pub use crate::wit_custom::TaskStatusUpdateRequest;
 pub use crate::wit_custom::TaskResponse;
 pub use crate::wit_custom::NewTaskRequest;
-pub use crate::wit_custom::TaskStatusUpdateRequest;
-pub use crate::wit_custom::TaskManagerStats;
-pub use crate::wit_custom::Task;
 pub use crate::wit_custom::TaskStatus;
+pub use crate::wit_custom::Task;
+pub use crate::wit_custom::TaskManagerStats;
+pub use crate::wit_custom::TaskStatusUpdateRequest;
 pub use crate::wit_custom::TaskResponse;
 pub use crate::wit_custom::NewTaskRequest;
-pub use crate::wit_custom::TaskStatusUpdateRequest;
 
 /// Generated RPC stubs for the task_manager interface
 pub mod task_manager {
